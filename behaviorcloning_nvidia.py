@@ -63,16 +63,16 @@ def make_sample_list(y_name, data_ref, expand_data=False, expand_correction=0.0)
 
 def make_model():
     input_layers = [
-        Cropping2D(cropping=((60,50),(0,0)), input_shape=(160,320,3)),
+        Cropping2D(cropping=((60,50),(20,20)), input_shape=(160,320,3)),
         Lambda(lambda x: ((x / 255.0) - 0.5))
     ]
 
     feature_layers = [
-        Conv2D(24, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
-        Conv2D(36, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
-#        Conv2D(48, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
-        Conv2D(64, kernel_size=(3, 3), activation='relu'),
-        Conv2D(64, kernel_size=(3, 3), activation='relu')
+        Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
+        Conv2D(18, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
+#        Conv2D(24, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
+        Conv2D(32, kernel_size=(3, 3), activation='relu'),
+        Conv2D(32, kernel_size=(3, 3), activation='relu')
         ]
 
     classification_layers = [
@@ -110,7 +110,7 @@ def generator(samples, batch_size):
 
 def do_initial_learning(dataDir,outputfile):
 
-    inputDirs = get_data_dirs(dataDir+"/data*")
+    inputDirs = get_data_dirs(dataDir+"/*")
     if (len(inputDirs)==0):
         print("No data was found in {0}. Execution is stopped.", dataDir)
         sys.exit(2)
@@ -140,15 +140,28 @@ def do_initial_learning(dataDir,outputfile):
     checkpoint_path = get_checkpoint_path("Training")
 
     cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, period=1)
-    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=1, verbose=1, mode='min')
+    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=4, verbose=1, mode='min')
 
     model.compile(loss='mse', optimizer='adam')
-    model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/batch_size), 
+    history_object = model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/batch_size), 
                 validation_data=valid_generator, validation_steps=math.ceil(len(valid_samples)/batch_size),
                 epochs=15, verbose=1,
                 callbacks=[cp_callback, es_callback])
-                
+
     model.save(outputfile+'0.h5')
+
+    ### print the keys contained in the history object
+    print(history_object.history.keys())
+
+    ### plot the training and validation loss for each epoch
+    plt.plot(history_object.history['loss'])
+    plt.plot(history_object.history['val_loss'])
+    plt.title('model mean squared error loss')
+    plt.ylabel('mean squared error loss')
+    plt.xlabel('epoch')
+    plt.legend(['training set', 'validation set'], loc='upper right')
+    plt.show()
+    plt.savefig('convergence_history.png')
 
 
 def do_transfer_learning(dataDir,model_file,outputfile):
