@@ -70,18 +70,17 @@ def make_sample_list(y_name, data_ref, expand_data=False, expand_correction=0.0)
 def make_model():
     input_layers = [
         Cropping2D(cropping=((60,50),(20,20)), input_shape=(160,320,3)),
-        Lambda(lambda x: 2*((x / 255.0) - 0.5))
+        Lambda(lambda x: 2*((x / 255.0) - 0.5)),
+        Dropout(0.2)
     ]
-    Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='elu', kernel_regularizer=regularizers.l2(0.01),
-                activity_regularizer=regularizers.l1(0.01))
 
     feature_layers = [
         Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='elu'), #kernel_regularizer=regularizers.l2(0.01)  activity_regularizer=regularizers.l1(0.01)),
         Dropout(0.5),
         Conv2D(18, strides=(2, 2), kernel_size=(5, 5), activation='elu'),
         Dropout(0.5),
-#        Conv2D(24, strides=(2, 2), kernel_size=(5, 5), activation='elu'kernel_regularizer=regularizers.l2(0.01),
-#                activity_regularizer=regularizers.l1(0.01)),
+        Conv2D(24, strides=(1, 1), kernel_size=(5, 5), activation='elu'),
+        Dropout(0.5),
         Conv2D(32, kernel_size=(3, 3), activation='elu'), 
         Dropout(0.5),
         Conv2D(32, kernel_size=(3, 3), activation='elu'),
@@ -110,34 +109,26 @@ def generator(samples, batch_size, data_augmentation=False):
     while 1:
         sklearn.utils.shuffle(samples)
 
-        for offset in range(0, num_samples, batch_size):
+        for offset in range(0, int(num_samples), batch_size):
             batch_samples = samples[offset:offset+batch_size]
             images = []
             angles = []
             for batch_sample in batch_samples:
                 if (os.path.exists(batch_sample[0])):
+                    img = plt.imread(batch_sample[0])
+                    images.append(img)
+                    angles.append(batch_sample[1])
+                    images.append(np.fliplr(img))
+                    angles.append(-batch_sample[1])
                     if (batch_sample[0][0:10] == "IMG/center"):
-                        if (abs(batch_sample[1])<0.01):
-                            r =random.randint(0,400)
-                            if (r<20):
-                                img = plt.imread(batch_sample[0])
-                                images.append(img)
-                                angles.append(batch_sample[1])
-                                images.append(np.fliplr(img))
-                                angles.append(-batch_sample[1])
-                            elif (data_augmentation):
-                                r =random.randint(-400,400)
-                                if (abs(r)<21):
-                                    img = plt.imread(batch_sample[0])
-                                    M = np.float32([[1,0, r],[0,1,0]])
-                                    images.append(cv2.warpAffine(img,M,(cols,rows)))
-                                    angles.append(batch_sample[1]+0.005*r)
-                    else:
-                        img = plt.imread(batch_sample[0])
-                        images.append(img)
-                        angles.append(batch_sample[1])
-                        images.append(np.fliplr(img))
-                        angles.append(-batch_sample[1])
+                        r =random.randint(5,20)
+                        M = np.float32([[1,0, r],[0,1,0]])
+                        images.append(cv2.warpAffine(plt.imread(batch_sample[0]),M,(cols,rows)))
+                        angles.append(batch_sample[1]+0.008*r)
+                        r =random.randint(-20,5)
+                        M = np.float32([[1,0, r],[0,1,0]])
+                        images.append(cv2.warpAffine(plt.imread(batch_sample[0]),M,(cols,rows)))
+                        angles.append(batch_sample[1]+0.008*r)
             X_train = np.array(images)
             Y_train = np.array(angles)
             yield sklearn.utils.shuffle(X_train, Y_train)
@@ -174,7 +165,7 @@ def do_initial_learning(dataDir,outputfile):
     checkpoint_path = get_checkpoint_path("Training")
 
     cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, period=1)
-    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.001, patience=2, verbose=1, mode='min')
+    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.001, patience=2, verbose=1, mode='max')
 
     model.compile(loss='mse', optimizer='adam')
     history_object = model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/batch_size), 
