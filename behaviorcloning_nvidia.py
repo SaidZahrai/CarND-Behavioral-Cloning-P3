@@ -7,6 +7,7 @@ import datetime
 
 import math
 import numpy as np
+import random
 import matplotlib.pyplot as plt
 import sklearn
 from sklearn.model_selection import train_test_split
@@ -14,6 +15,7 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential, save_model, load_model
 from keras.layers import Flatten, Dense, Lambda, Dropout, Conv2D, MaxPooling2D, Activation, Cropping2D
 from keras.utils import plot_model
+from keras import regularizers
 import keras.callbacks as callbacks
 
 
@@ -55,55 +57,87 @@ def make_sample_list(y_name, data_ref, expand_data=False, expand_correction=0.0)
         output_x.append(d["center"])
         output_y.append(d[y_name])
         if expand_data:
-            output_x.append(d["left"])
-            output_y.append(d[y_name]+expand_correction)
-            output_x.append(d["right"])
-            output_y.append(d[y_name]-expand_correction)
+            r = random.randint(0,9)
+            if (r<5):
+                output_x.append(d["left"])
+                output_y.append(d[y_name]+expand_correction)
+            r = random.randint(0,9)
+            if (r<5):
+                output_x.append(d["right"])
+                output_y.append(d[y_name]-expand_correction)
     return list(zip(output_x, output_y))
 
 def make_model():
     input_layers = [
         Cropping2D(cropping=((60,50),(20,20)), input_shape=(160,320,3)),
-        Lambda(lambda x: ((x / 255.0) - 0.5))
+        Lambda(lambda x: 2*((x / 255.0) - 0.5))
     ]
+    Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='elu', kernel_regularizer=regularizers.l2(0.01),
+                activity_regularizer=regularizers.l1(0.01))
 
     feature_layers = [
-        Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
-        Conv2D(18, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
-#        Conv2D(24, strides=(2, 2), kernel_size=(5, 5), activation='relu'),
-        Conv2D(32, kernel_size=(3, 3), activation='relu'),
-        Conv2D(32, kernel_size=(3, 3), activation='relu')
+        Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='elu'), #kernel_regularizer=regularizers.l2(0.01)  activity_regularizer=regularizers.l1(0.01)),
+        Dropout(0.5),
+        Conv2D(18, strides=(2, 2), kernel_size=(5, 5), activation='elu'),
+        Dropout(0.5),
+#        Conv2D(24, strides=(2, 2), kernel_size=(5, 5), activation='elu'kernel_regularizer=regularizers.l2(0.01),
+#                activity_regularizer=regularizers.l1(0.01)),
+        Conv2D(32, kernel_size=(3, 3), activation='elu'), 
+        Dropout(0.5),
+        Conv2D(32, kernel_size=(3, 3), activation='elu'),
+        Dropout(0.5)
         ]
 
     classification_layers = [
         Flatten(),
-        Dropout(0.2),
-        Dense(100, activation="relu"),
         Dropout(0.5),
-        Dense(50, activation="relu"),
+        Dense(100, activation="elu"),
         Dropout(0.5),
-        Dense(10, activation="relu"),
+        Dense(50, activation="elu"),
+        Dropout(0.5),
+        Dense(10, activation="elu"),
         Dropout(0.5),
         Dense(1)
     ]
 
     return Sequential(input_layers + feature_layers + classification_layers)
 
-def generator(samples, batch_size):
+def generator(samples, batch_size, data_augmentation=False):
     num_samples = len(samples)
+    cols=320
+    rows=160
+
     while 1:
         sklearn.utils.shuffle(samples)
+
         for offset in range(0, num_samples, batch_size):
             batch_samples = samples[offset:offset+batch_size]
             images = []
             angles = []
             for batch_sample in batch_samples:
                 if (os.path.exists(batch_sample[0])):
-                    img = plt.imread(batch_sample[0])
-                    images.append(img)
-                    angles.append(batch_sample[1])
-                    images.append(np.fliplr(img))
-                    angles.append(-batch_sample[1])
+                    if (batch_sample[0][0:10] == "IMG/center"):
+                        if (abs(batch_sample[1])<0.01):
+                            r =random.randint(0,400)
+                            if (r<20):
+                                img = plt.imread(batch_sample[0])
+                                images.append(img)
+                                angles.append(batch_sample[1])
+                                images.append(np.fliplr(img))
+                                angles.append(-batch_sample[1])
+                            elif (data_augmentation):
+                                r =random.randint(-400,400)
+                                if (abs(r)<21):
+                                    img = plt.imread(batch_sample[0])
+                                    M = np.float32([[1,0, r],[0,1,0]])
+                                    images.append(cv2.warpAffine(img,M,(cols,rows)))
+                                    angles.append(batch_sample[1]+0.005*r)
+                    else:
+                        img = plt.imread(batch_sample[0])
+                        images.append(img)
+                        angles.append(batch_sample[1])
+                        images.append(np.fliplr(img))
+                        angles.append(-batch_sample[1])
             X_train = np.array(images)
             Y_train = np.array(angles)
             yield sklearn.utils.shuffle(X_train, Y_train)
@@ -131,21 +165,21 @@ def do_initial_learning(dataDir,outputfile):
         data_references += read_cvs(data_dir)
 
     train_data, valid_data = train_test_split(data_references,test_size=0.2)
-    train_samples = make_sample_list("steering", train_data,expand_data=True, expand_correction=0.4)
+    train_samples = make_sample_list("steering", train_data,expand_data=True, expand_correction=0.25)
     valid_samples = make_sample_list("steering", valid_data,expand_data=False)
 
-    train_generator = generator(train_samples, batch_size=batch_size)
-    valid_generator = generator(valid_samples, batch_size=batch_size)
+    train_generator = generator(train_samples, batch_size=batch_size, data_augmentation=True)
+    valid_generator = generator(valid_samples, batch_size=batch_size, data_augmentation=False)
 
     checkpoint_path = get_checkpoint_path("Training")
 
     cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, period=1)
-    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=4, verbose=1, mode='min')
+    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.001, patience=2, verbose=1, mode='min')
 
     model.compile(loss='mse', optimizer='adam')
     history_object = model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/batch_size), 
                 validation_data=valid_generator, validation_steps=math.ceil(len(valid_samples)/batch_size),
-                epochs=15, verbose=1,
+                epochs=10, verbose=1,
                 callbacks=[cp_callback, es_callback])
 
     model.save(outputfile+'0.h5')
@@ -208,7 +242,7 @@ def do_transfer_learning(dataDir,model_file,outputfile):
         model.compile(loss='mse', optimizer='adam')
         model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/batch_size), 
                     validation_data=valid_generator, validation_steps=math.ceil(len(valid_samples)/batch_size),
-                    epochs=15, verbose=1,
+                    epochs=5, verbose=1,
                     callbacks=[cp_callback, es_callback])
                     
         model.save(outputfile+str(i+1)+'.h5')
