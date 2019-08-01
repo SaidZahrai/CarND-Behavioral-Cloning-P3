@@ -13,7 +13,7 @@ import sklearn
 from sklearn.model_selection import train_test_split
 
 from keras.models import Sequential, save_model, load_model
-from keras.layers import Flatten, Dense, Lambda, Dropout, Conv2D, MaxPooling2D, Activation, Cropping2D
+from keras.layers import Flatten, Dense, Lambda, Dropout, Conv2D, MaxPooling2D, Activation, Cropping2D, BatchNormalization
 from keras.utils import plot_model
 from keras import regularizers
 import keras.callbacks as callbacks
@@ -57,7 +57,7 @@ def make_sample_list(y_name, data_ref, expand_data=False, expand_correction=0.0)
         output_x.append(d["center"])
         output_y.append(d[y_name])
         if expand_data:
-            r = random.randint(0,9)
+            r = random.randint(0,9)*0
             if (r<5):
                 output_x.append(d["left"])
                 output_y.append(d[y_name]+expand_correction)
@@ -75,27 +75,37 @@ def make_model():
     ]
 
     feature_layers = [
-        Conv2D(12, strides=(2, 2), kernel_size=(5, 5), activation='elu'), #kernel_regularizer=regularizers.l2(0.01)  activity_regularizer=regularizers.l1(0.01)),
-        Dropout(0.5),
-        Conv2D(18, strides=(2, 2), kernel_size=(5, 5), activation='elu'),
-        Dropout(0.5),
-        Conv2D(24, strides=(1, 1), kernel_size=(5, 5), activation='elu'),
-        Dropout(0.5),
-        Conv2D(32, kernel_size=(3, 3), activation='elu'), 
-        Dropout(0.5),
-        Conv2D(32, kernel_size=(3, 3), activation='elu'),
-        Dropout(0.5)
-        ]
+        Conv2D(12, strides=(2, 2), kernel_size=(5, 5)),
+#        BatchNormalization(),
+        Activation("elu"),
+        Conv2D(18, strides=(2, 2), kernel_size=(5, 5)),
+#        BatchNormalization(),
+        Activation("elu"),
+        Conv2D(24, strides=(1, 1), kernel_size=(5, 5)),
+#        BatchNormalization(),
+        Activation("elu"),
+        Conv2D(32, kernel_size=(3, 3)), 
+#        BatchNormalization(),
+        Activation("elu"),
+        Conv2D(32, kernel_size=(3, 3)),
+#        BatchNormalization(),
+        Activation("elu"),
+       ]
 
     classification_layers = [
         Flatten(),
+        Dense(100),
         Dropout(0.5),
-        Dense(100, activation="elu"),
+#        BatchNormalization(),
+        Activation("elu"),
+        Dense(50),
         Dropout(0.5),
-        Dense(50, activation="elu"),
+#        BatchNormalization(),
+        Activation("elu"),
+        Dense(10),
         Dropout(0.5),
-        Dense(10, activation="elu"),
-        Dropout(0.5),
+#        BatchNormalization(),
+        Activation("elu"),
         Dense(1)
     ]
 
@@ -109,26 +119,34 @@ def generator(samples, batch_size, data_augmentation=False):
     while 1:
         sklearn.utils.shuffle(samples)
 
-        for offset in range(0, int(num_samples), batch_size):
+        for offset in range(0, num_samples, batch_size):
             batch_samples = samples[offset:offset+batch_size]
             images = []
             angles = []
             for batch_sample in batch_samples:
                 if (os.path.exists(batch_sample[0])):
-                    img = plt.imread(batch_sample[0])
-                    images.append(img)
-                    angles.append(batch_sample[1])
-                    images.append(np.fliplr(img))
-                    angles.append(-batch_sample[1])
                     if (batch_sample[0][0:10] == "IMG/center"):
-                        r =random.randint(5,20)
-                        M = np.float32([[1,0, r],[0,1,0]])
-                        images.append(cv2.warpAffine(plt.imread(batch_sample[0]),M,(cols,rows)))
-                        angles.append(batch_sample[1]+0.008*r)
-                        r =random.randint(-20,5)
-                        M = np.float32([[1,0, r],[0,1,0]])
-                        images.append(cv2.warpAffine(plt.imread(batch_sample[0]),M,(cols,rows)))
-                        angles.append(batch_sample[1]+0.008*r)
+                        if (abs(batch_sample[1])<0.01):
+                            r =random.randint(0,400)
+                            if (r<20):
+                                img = plt.imread(batch_sample[0])
+                                images.append(img)
+                                angles.append(batch_sample[1])
+                                images.append(np.fliplr(img))
+                                angles.append(-batch_sample[1])
+                            elif (data_augmentation):
+                                r =random.randint(-40,40)
+                                if (abs(r)<21):
+                                    img = plt.imread(batch_sample[0])
+                                    M = np.float32([[1,0, r],[0,1,0]])
+                                    images.append(cv2.warpAffine(img,M,(cols,rows)))
+                                    angles.append(batch_sample[1]+0.005*r)
+                    else:
+                        img = plt.imread(batch_sample[0])
+                        images.append(img)
+                        angles.append(batch_sample[1])
+                        images.append(np.fliplr(img))
+                        angles.append(-batch_sample[1])
             X_train = np.array(images)
             Y_train = np.array(angles)
             yield sklearn.utils.shuffle(X_train, Y_train)
@@ -156,7 +174,7 @@ def do_initial_learning(dataDir,outputfile):
         data_references += read_cvs(data_dir)
 
     train_data, valid_data = train_test_split(data_references,test_size=0.2)
-    train_samples = make_sample_list("steering", train_data,expand_data=True, expand_correction=0.25)
+    train_samples = make_sample_list("steering", train_data,expand_data=True, expand_correction=0.08)
     valid_samples = make_sample_list("steering", valid_data,expand_data=False)
 
     train_generator = generator(train_samples, batch_size=batch_size, data_augmentation=True)
@@ -165,7 +183,7 @@ def do_initial_learning(dataDir,outputfile):
     checkpoint_path = get_checkpoint_path("Training")
 
     cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, period=1)
-    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.001, patience=2, verbose=1, mode='max')
+    es_callback = callbacks.EarlyStopping(monitor='val_loss', min_delta=0.001, patience=2, verbose=1, mode='min')
 
     model.compile(loss='mse', optimizer='adam')
     history_object = model.fit_generator(train_generator, steps_per_epoch=math.ceil(len(train_samples)/batch_size), 
