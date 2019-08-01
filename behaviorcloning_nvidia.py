@@ -88,6 +88,7 @@ def make_model():
 #        BatchNormalization(),
         Activation("elu"),
         Conv2D(32, kernel_size=(3, 3)),
+#        Dropout(0.5),
 #        BatchNormalization(),
         Activation("elu"),
        ]
@@ -103,7 +104,7 @@ def make_model():
 #        BatchNormalization(),
         Activation("elu"),
         Dense(10),
-        Dropout(0.5),
+#        Dropout(0.5),
 #        BatchNormalization(),
         Activation("elu"),
         Dense(1)
@@ -209,7 +210,7 @@ def do_initial_learning(dataDir,outputfile):
 
 def do_transfer_learning(dataDir,model_file,outputfile):
 
-    inputDirs = get_data_dirs(dataDir+"/test*")
+    inputDirs = get_data_dirs(dataDir+"/*")
     if (len(inputDirs)==0):
         print("No data was found in {0}. Execution is stopped.".format(dataDir))
         sys.exit(2)
