@@ -1,0 +1,417 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.4)  4 AUG 2019 22:20
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Writeup.tex
+(./Writeup.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2015/03/17 v1.2c Input encoding file
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks16
+\ex@=\dimen103
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks17
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks18
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+(./Writeup.aux
+
+LaTeX Warning: Label `fig:models' multiply defined.
+
+)
+\openout1 = `Writeup.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count99
+\scratchdimen=\dimen114
+\scratchbox=\box28
+\nofMPsegments=\count100
+\nofMParguments=\count101
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count102
+\MPscratchDim=\dimen115
+\MPnumerator=\count103
+\makeMPintoPDFobject=\count104
+\everyMPtoPDFconversion=\toks23
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Try loading font information for U+msa on input line 10.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 10.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+<writeup_figures/three_cameras_1.png, id=1, 715.67375pt x 133.49875pt>
+File: writeup_figures/three_cameras_1.png Graphic file (type png)
+<use writeup_figures/three_cameras_1.png>
+Package pdftex.def Info: writeup_figures/three_cameras_1.png  used on input lin
+e 18.
+(pdftex.def)             Requested size: 272.99881pt x 50.92355pt.
+<writeup_figures/three_cameras_2.png, id=3, 715.67375pt x 133.49875pt>
+File: writeup_figures/three_cameras_2.png Graphic file (type png)
+<use writeup_figures/three_cameras_2.png>
+Package pdftex.def Info: writeup_figures/three_cameras_2.png  used on input lin
+e 19.
+(pdftex.def)             Requested size: 272.99881pt x 50.92355pt.
+<writeup_figures/three_cameras_3.png, id=4, 715.67375pt x 133.49875pt>
+File: writeup_figures/three_cameras_3.png Graphic file (type png)
+<use writeup_figures/three_cameras_3.png>
+Package pdftex.def Info: writeup_figures/three_cameras_3.png  used on input lin
+e 20.
+(pdftex.def)             Requested size: 272.99881pt x 50.92355pt.
+<writeup_figures/three_cameras_4.png, id=5, 715.67375pt x 133.49875pt>
+File: writeup_figures/three_cameras_4.png Graphic file (type png)
+<use writeup_figures/three_cameras_4.png>
+Package pdftex.def Info: writeup_figures/three_cameras_4.png  used on input lin
+e 21.
+(pdftex.def)             Requested size: 272.99881pt x 50.92355pt.
+<writeup_figures/three_cameras_5.png, id=6, 715.67375pt x 133.49875pt>
+File: writeup_figures/three_cameras_5.png Graphic file (type png)
+<use writeup_figures/three_cameras_5.png>
+Package pdftex.def Info: writeup_figures/three_cameras_5.png  used on input lin
+e 22.
+(pdftex.def)             Requested size: 272.99881pt x 50.92355pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<writeup_figures/corped_image_1.png, id=7, 709.65125pt x 69.25874pt>
+File: writeup_figures/corped_image_1.png Graphic file (type png)
+<use writeup_figures/corped_image_1.png>
+Package pdftex.def Info: writeup_figures/corped_image_1.png  used on input line
+ 29.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/corped_image_2.png, id=8, 709.65125pt x 69.25874pt>
+File: writeup_figures/corped_image_2.png Graphic file (type png)
+<use writeup_figures/corped_image_2.png>
+Package pdftex.def Info: writeup_figures/corped_image_2.png  used on input line
+ 30.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/corped_image_3.png, id=9, 709.65125pt x 69.25874pt>
+File: writeup_figures/corped_image_3.png Graphic file (type png)
+<use writeup_figures/corped_image_3.png>
+Package pdftex.def Info: writeup_figures/corped_image_3.png  used on input line
+ 31.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/corped_image_4.png, id=10, 709.65125pt x 69.25874pt>
+File: writeup_figures/corped_image_4.png Graphic file (type png)
+<use writeup_figures/corped_image_4.png>
+Package pdftex.def Info: writeup_figures/corped_image_4.png  used on input line
+ 32.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/corped_image_5.png, id=11, 709.65125pt x 69.25874pt>
+File: writeup_figures/corped_image_5.png Graphic file (type png)
+<use writeup_figures/corped_image_5.png>
+Package pdftex.def Info: writeup_figures/corped_image_5.png  used on input line
+ 33.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<writeup_figures/steering_distribution.png, id=12, 385.44pt x 252.945pt>
+File: writeup_figures/steering_distribution.png Graphic file (type png)
+<use writeup_figures/steering_distribution.png>
+Package pdftex.def Info: writeup_figures/steering_distribution.png  used on inp
+ut line 40.
+(pdftex.def)             Requested size: 272.99881pt x 179.15607pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<writeup_figures/shifted_image_1.png, id=13, 709.65125pt x 69.25874pt>
+File: writeup_figures/shifted_image_1.png Graphic file (type png)
+<use writeup_figures/shifted_image_1.png>
+Package pdftex.def Info: writeup_figures/shifted_image_1.png  used on input lin
+e 47.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/shifted_image_2.png, id=14, 709.65125pt x 69.25874pt>
+File: writeup_figures/shifted_image_2.png Graphic file (type png)
+<use writeup_figures/shifted_image_2.png>
+Package pdftex.def Info: writeup_figures/shifted_image_2.png  used on input lin
+e 48.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/shifted_image_3.png, id=15, 709.65125pt x 69.25874pt>
+File: writeup_figures/shifted_image_3.png Graphic file (type png)
+<use writeup_figures/shifted_image_3.png>
+Package pdftex.def Info: writeup_figures/shifted_image_3.png  used on input lin
+e 49.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/shifted_image_4.png, id=16, 709.65125pt x 69.25874pt>
+File: writeup_figures/shifted_image_4.png Graphic file (type png)
+<use writeup_figures/shifted_image_4.png>
+Package pdftex.def Info: writeup_figures/shifted_image_4.png  used on input lin
+e 50.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+<writeup_figures/shifted_image_5.png, id=17, 709.65125pt x 69.25874pt>
+File: writeup_figures/shifted_image_5.png Graphic file (type png)
+<use writeup_figures/shifted_image_5.png>
+Package pdftex.def Info: writeup_figures/shifted_image_5.png  used on input lin
+e 51.
+(pdftex.def)             Requested size: 272.99881pt x 26.64407pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<writeup_figures/nvidia_model_structure.png, id=18, 533.995pt x 2171.11125pt>
+File: writeup_figures/nvidia_model_structure.png Graphic file (type png)
+<use writeup_figures/nvidia_model_structure.png>
+Package pdftex.def Info: writeup_figures/nvidia_model_structure.png  used on in
+put line 77.
+(pdftex.def)             Requested size: 117.00119pt x 475.69138pt.
+<writeup_figures/lenet_model_structure.png, id=19, 561.09625pt x 1504.62125pt>
+File: writeup_figures/lenet_model_structure.png Graphic file (type png)
+<use writeup_figures/lenet_model_structure.png>
+Package pdftex.def Info: writeup_figures/lenet_model_structure.png  used on inp
+ut line 78.
+(pdftex.def)             Requested size: 117.00119pt x 313.72984pt.
+<writeup_figures/nvidia_reduced_model_structure.png, id=20, 533.995pt x 2171.11
+125pt>
+File: writeup_figures/nvidia_reduced_model_structure.png Graphic file (type png
+)
+<use writeup_figures/nvidia_reduced_model_structure.png>
+Package pdftex.def Info: writeup_figures/nvidia_reduced_model_structure.png  us
+ed on input line 78.
+(pdftex.def)             Requested size: 117.00119pt x 475.69138pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<writeup_figures/nvidia_convergence_history.png, id=21, 462.528pt x 346.896pt>
+File: writeup_figures/nvidia_convergence_history.png Graphic file (type png)
+<use writeup_figures/nvidia_convergence_history.png>
+Package pdftex.def Info: writeup_figures/nvidia_convergence_history.png  used o
+n input line 86.
+(pdftex.def)             Requested size: 117.00119pt x 87.75066pt.
+<writeup_figures/lenet_convergence_history.png, id=22, 462.528pt x 346.896pt>
+File: writeup_figures/lenet_convergence_history.png Graphic file (type png)
+<use writeup_figures/lenet_convergence_history.png>
+Package pdftex.def Info: writeup_figures/lenet_convergence_history.png  used on
+ input line 87.
+(pdftex.def)             Requested size: 117.00119pt x 87.75066pt.
+<writeup_figures/nvidia_reduced_convergence_history.png, id=23, 462.528pt x 346
+.896pt>
+File: writeup_figures/nvidia_reduced_convergence_history.png Graphic file (type
+ png)
+<use writeup_figures/nvidia_reduced_convergence_history.png>
+Package pdftex.def Info: writeup_figures/nvidia_reduced_convergence_history.png
+  used on input line 87.
+(pdftex.def)             Requested size: 117.00119pt x 87.75066pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./writeup_figures/thre
+e_cameras_1.png> <./writeup_figures/three_cameras_2.png> <./writeup_figures/thr
+ee_cameras_3.png> <./writeup_figures/three_cameras_4.png> <./writeup_figures/th
+ree_cameras_5.png> <./writeup_figures/corped_image_1.png> <./writeup_figures/co
+rped_image_2.png> <./writeup_figures/corped_image_3.png> <./writeup_figures/cor
+ped_image_4.png> <./writeup_figures/corped_image_5.png>] [3 <./writeup_figures/
+steering_distribution.png> <./writeup_figures/shifted_image_1.png> <./writeup_f
+igures/shifted_image_2.png> <./writeup_figures/shifted_image_3.png> <./writeup_
+figures/shifted_image_4.png> <./writeup_figures/shifted_image_5.png>]
+[4 <./writeup_figures/nvidia_model_structure.png> <./writeup_figures/lenet_mode
+l_structure.png> <./writeup_figures/nvidia_reduced_model_structure.png>]
+[5 <./writeup_figures/nvidia_convergence_history.png> <./writeup_figures/lenet_
+convergence_history.png> <./writeup_figures/nvidia_reduced_convergence_history.
+png>] (./Writeup.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2481 strings out of 494923
+ 35696 string characters out of 6180743
+ 87789 words of memory out of 5000000
+ 5749 multiletter control sequences out of 15000+600000
+ 7918 words of font info for 31 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 41i,6n,25p,302b,226s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Writeup.pdf (5 pages, 1391961 bytes).
+PDF statistics:
+ 81 PDF objects out of 1000 (max. 8388607)
+ 25 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+
