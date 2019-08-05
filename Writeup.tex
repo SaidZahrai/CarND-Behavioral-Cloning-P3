@@ -4,6 +4,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{float}
 \author{Said Zahrai}
 \title{Behavioral Cloning}
 \begin{document}
@@ -13,7 +14,7 @@
 	The goal of this project is to clone the behavior of a driver driving a car in a Unity game. A player needs to play first and record data. While the player is playing, the environment is observed with three cameras mounted in the middle of the car, and in the two left and right corners.
 	\section{Data}
 	\subsection{Camera recorded images}
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_1}
 		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_2}
@@ -24,7 +25,7 @@
 		\label{fig:threecameras}
 	\end{figure}
 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_1}
 		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_2}
@@ -35,14 +36,14 @@
 		\label{fig:corpedimages}
 	\end{figure}
 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{writeup_figures/steering_distribution}
 		\caption{Distribution of steering values.}
 		\label{fig:distribution}
 	\end{figure}
 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_1}
 		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_2}
@@ -72,7 +73,7 @@
 		\hspace*{1.5cm} angles.append(steering\_value+0.01*r)}
 	
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.3\linewidth]{writeup_figures/nvidia_model_structure}
 		\includegraphics[width=0.3\linewidth]{writeup_figures/lenet_model_structure}		\includegraphics[width=0.3\linewidth]{writeup_figures/nvidia_reduced_model_structure}
@@ -80,13 +81,43 @@
 		\label{fig:models}
 	\end{figure}
 
-	
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.3\linewidth]{writeup_figures/nvidia_convergence_history}
-		\includegraphics[width=0.3\linewidth]{writeup_figures/lenet_convergence_history}		\includegraphics[width=0.3\linewidth]{writeup_figures/nvidia_reduced_convergence_history}
-		\caption{Convergence history: Left, Nvidia's network, center, Lenet's network and right, reduced version of Nvidia's network.}
-		\label{fig:models}
-	\end{figure}
+\begin{tabular}{|c|c|c|c|}
+	\hline 
+	&Nvidia  &Lenet  &Reduced Nvidia  \\ 
+	\hline 
+	Total params &   510,644& 1,495,449 & 223,842 \\ 
+	\hline 
+	Trainable params & 510,594 & 1,471,513 & 223,792\\ 
+	\hline 
+	Time per first epoch &  440 s& 250 s & 190 s\\ 
+	\hline 
+Typical time per epoch & 180 s & 150-250 s & 200 s\\ 
+	\hline 
+	Number of epoch& 6 & 6  & 9 \\ 
+	\hline 
+\end{tabular} 
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{writeup_figures/nvidia_loss}
+	\includegraphics[width=0.3\linewidth]{writeup_figures/lenet_loss}		\includegraphics[width=0.3\linewidth]{writeup_figures/nvidia_reduced_loss}
+	\caption{Convergence history: Left, Nvidia's network, center, Lenet's network and right, reduced version of Nvidia's network.}
+	\label{fig:models}
+\end{figure}
+
+\begin{tabular}{|c|c|c|c|}
+	\hline 
+	Speed &Nvidia  &Lenet  &Reduced Nvidia  \\ 
+	\hline 
+	9 MPH  &   OK& OK & OK \\ 
+	\hline 
+	20 MPH& OK & Touches lane borders & Touches lane borders\\ 
+	\hline 
+	30 MPH&  OK& Passes lane borders & Drives out from track\\ 
+	\hline  
+\end{tabular} 
+
 
 \end{document}
