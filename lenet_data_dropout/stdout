@@ -1,0 +1,71 @@
+# python model.py -m lenet -d ../data
+Using TensorFlow backend.
+Training data will be taken from:  ../data
+Output file is  model_lenet  +.h5
+Please confirm with "Y"!  :: Y
+1 directory as input data found.
+../data
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+cropping2d_1 (Cropping2D)    (None, 50, 280, 3)        0         
+_________________________________________________________________
+lambda_1 (Lambda)            (None, 50, 280, 3)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 50, 280, 3)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 278, 6)        168       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 24, 139, 6)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 22, 137, 16)       880       
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 11, 68, 16)        0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 11968)             0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 11968)             0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 120)               1436280   
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 120)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 84)                10164     
+_________________________________________________________________
+dropout_4 (Dropout)          (None, 84)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 85        
+=================================================================
+Total params: 1,447,577
+Trainable params: 1,447,577
+Non-trainable params: 0
+_________________________________________________________________
+Start training with data from directory:  ../data
+Epoch 1/10
+2019-08-06 22:02:16.324230: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-06 22:02:16.325136: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-06 22:02:16.325198: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-06 22:02:16.325241: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-06 22:02:16.325281: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-06 22:02:16.440884: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-08-06 22:02:16.441781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:00:04.0
+Total memory: 11.17GiB
+Free memory: 11.05GiB
+2019-08-06 22:02:16.441871: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-08-06 22:02:16.441915: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-08-06 22:02:16.441979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:00:04.0)
+603/603 [==============================] - 91s 151ms/step - loss: 0.0437 - val_loss: 0.0135
+
+Epoch 00001: saving model to .//checkpoints-8-6-22-0001-01-01 00:00:00-15/model.ckpt
+Epoch 2/10
+603/603 [==============================] - 88s 146ms/step - loss: 0.0295 - val_loss: 0.0144
+
+Epoch 00002: saving model to .//checkpoints-8-6-22-0001-01-01 00:00:00-15/model.ckpt
+Epoch 3/10
+603/603 [==============================] - 88s 145ms/step - loss: 0.0278 - val_loss: 0.0145
+
+Epoch 00003: saving model to .//checkpoints-8-6-22-0001-01-01 00:00:00-15/model.ckpt
+
