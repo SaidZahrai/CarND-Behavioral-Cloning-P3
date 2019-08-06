@@ -57,13 +57,10 @@ def make_sample_list(y_name, data_ref, expand_data=False, expand_correction=0.0)
         output_x.append(d["center"])
         output_y.append(d[y_name])
         if expand_data:
-            r = random.randint(0,9)
-            if (r<5):
-                output_x.append(d["left"])
-                output_y.append(d[y_name]+expand_correction)
-            else:
-                output_x.append(d["right"])
-                output_y.append(d[y_name]-expand_correction)
+            output_x.append(d["left"])
+            output_y.append(d[y_name]+expand_correction)
+            output_x.append(d["right"])
+            output_y.append(d[y_name]-expand_correction)
     return list(zip(output_x, output_y))
 
 def make_model(model):
@@ -139,12 +136,11 @@ def generator(samples, batch_size, data_augmentation=False):
                                 images.append(np.fliplr(img))
                                 angles.append(-batch_sample[1])
                             elif (data_augmentation):
-                                r =random.randint(-40,40)
-                                if (abs(r)<21):
-                                    img = plt.imread(batch_sample[0])
-                                    M = np.float32([[1,0, r],[0,1,0]])
-                                    images.append(cv2.warpAffine(img,M,(cols,rows)))
-                                    angles.append(batch_sample[1]+0.01*r)
+                                r =random.randint(-20,20)
+                                img = plt.imread(batch_sample[0])
+                                M = np.float32([[1,0, r],[0,1,0]])
+                                images.append(cv2.warpAffine(img,M,(cols,rows)))
+                                angles.append(batch_sample[1]+0.02*r)
                     else:
                         img = plt.imread(batch_sample[0])
                         images.append(img)
