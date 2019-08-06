@@ -174,7 +174,7 @@ def train_model(net_model, dataDir,outputfile):
         data_references += read_cvs(data_dir)
 
     train_data, valid_data = train_test_split(data_references,test_size=0.2)
-    train_samples = make_sample_list("steering", train_data,expand_data=True, expand_correction=0.2)
+    train_samples = make_sample_list("steering", train_data,expand_data=True, expand_correction=0.15)
     valid_samples = make_sample_list("steering", valid_data,expand_data=False)
 
     train_generator = generator(train_samples, batch_size=batch_size, data_augmentation=True)
