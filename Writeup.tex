@@ -10,46 +10,56 @@
 \begin{document}
 	\maketitle
 	
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.3\linewidth]{writeup_figures/Speed_09}
+		\includegraphics[width=0.3\linewidth]{writeup_figures/Speed_20}
+		\includegraphics[width=0.3\linewidth]{writeup_figures/Speed_30}
+		\caption{Simulations performed at three speeds: default in drive.py with speed set to 9 MPH (left), driving speed set to 20 MPH (middle) and speed set to 30 MPH (right).}
+		\label{fig:simulations}\\
+		
+	\end{figure}
+	
 	\section{Introduction}
 	The goal of this project is to clone the behavior of a driver driving a car in a Unity game. A player needs to play first and record data. While the player is playing, the environment is observed with three cameras mounted in the middle of the car, and in the two left and right corners.
 	\section{Data}
 	\subsection{Camera recorded images}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_1}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_2}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_3}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_4}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/three_cameras_5}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/three_cameras_1}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/three_cameras_2}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/three_cameras_3}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/three_cameras_4}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/three_cameras_5}
 		\caption{Camera recorded images. Left, seen from left camera, center from center camera and right from right camera.}
 		\label{fig:threecameras}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_1}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_2}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_3}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_4}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/corped_image_5}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/corped_image_1}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/corped_image_2}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/corped_image_3}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/corped_image_4}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/corped_image_5}
 		\caption{Corped images with focus on interesting region. Left, seen from left camera, center from center camera and right from right camera.}
 		\label{fig:corpedimages}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\linewidth]{writeup_figures/steering_distribution}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/steering_distribution}
 		\caption{Distribution of steering values.}
 		\label{fig:distribution}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_1}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_2}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_3}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_4}
-		\includegraphics[width=0.7\linewidth]{writeup_figures/shifted_image_5}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/shifted_image_1}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/shifted_image_2}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/shifted_image_3}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/shifted_image_4}
+		\includegraphics[width=0.9\linewidth]{writeup_figures/shifted_image_5}
 		\caption{Shifted images: Left, shifted 20 pixels to left, center, original image and right, shifted 20 pixels to right.}
 		\label{fig:shiftedimages}
 	\end{figure}
