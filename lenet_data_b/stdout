@@ -1,0 +1,77 @@
+Installing collected packages: pydot, graphviz
+Successfully installed graphviz-0.11.1 pydot-1.4.1
+You are using pip version 10.0.1, however version 19.2.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(/opt/carnd_p3/behavioral) root@03291d45754a:/home/workspace/CarND-Behavioral-Cloning-P3/lenet_data_b# python model.py -m lenet -d ../data
+Using TensorFlow backend.
+Training data will be taken from:  ../data
+Output file is  model_lenet  +.h5
+Please confirm with "Y"!  :: Y
+1 directory as input data found.
+../data
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+cropping2d_1 (Cropping2D)    (None, 50, 280, 3)        0         
+_________________________________________________________________
+lambda_1 (Lambda)            (None, 50, 280, 3)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 50, 280, 3)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 48, 278, 6)        168       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 24, 139, 6)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 22, 137, 16)       880       
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 11, 68, 16)        0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 11968)             0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 11968)             0         
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 11968)             47872     
+_________________________________________________________________
+dense_1 (Dense)              (None, 120)               1436280   
+_________________________________________________________________
+dense_2 (Dense)              (None, 84)                10164     
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 85        
+=================================================================
+Total params: 1,495,449
+Trainable params: 1,471,513
+Non-trainable params: 23,936
+_________________________________________________________________
+Start training with data from directory:  ../data
+Epoch 1/10
+2019-08-07 13:41:47.720722: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-07 13:41:47.721177: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-07 13:41:47.721268: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-07 13:41:47.721303: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-07 13:41:47.721330: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-07 13:41:47.834353: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-08-07 13:41:47.835252: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:00:04.0
+Total memory: 11.17GiB
+Free memory: 11.05GiB
+2019-08-07 13:41:47.835306: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-08-07 13:41:47.835330: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-08-07 13:41:47.835358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:00:04.0)
+602/603 [============================>.] - ETA: 0s - loss: 0.0637   
+603/603 [==============================] - 113s 188ms/step - loss: 0.0636 - val_loss: 0.0223
+
+Epoch 00001: saving model to .//checkpoints-8-7-13-0001-01-01 00:00:00-46/model.ckpt
+Epoch 2/10
+603/603 [==============================] - 86s 143ms/step - loss: 0.0254 - val_loss: 0.0181
+
+Epoch 00002: saving model to .//checkpoints-8-7-13-0001-01-01 00:00:00-46/model.ckpt
+Epoch 3/10
+603/603 [==============================] - 86s 143ms/step - loss: 0.0222 - val_loss: 0.0189
+
+Epoch 00003: saving model to .//checkpoints-8-7-13-0001-01-01 00:00:00-46/model.ckpt
+Epoch 4/10
+603/603 [==============================] - 86s 143ms/step - loss: 0.0205 - val_loss: 0.0185
+
+Epoch 00004: saving model to .//checkpoints-8-7-13-0001-01-01 00:00:00-46/model.ckpt
