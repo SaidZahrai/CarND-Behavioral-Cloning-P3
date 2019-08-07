@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.4)  8 AUG 2019 00:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.8.4)  8 AUG 2019 01:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -130,14 +130,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box28
 \@float@everytoks=\toks23
 \@floatcapt=\box29
-) (./Writeup.aux
-
-LaTeX Warning: Label `fig:threecameras' multiply defined.
-
-
-LaTeX Warning: Label `fig:models' multiply defined.
-
-)
+) (./Writeup.aux)
 \openout1 = `Writeup.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
@@ -152,7 +145,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count100
 \scratchdimen=\dimen114
@@ -246,51 +240,37 @@ File: writeup_figures/Speed_30.png Graphic file (type png)
 <use writeup_figures/Speed_30.png>
 Package pdftex.def Info: writeup_figures/Speed_30.png  used on input line 17.
 (pdftex.def)             Requested size: 117.00119pt x 87.83812pt.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.19 		\label{fig:simulations}\\
-                                
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 <writeup_figures/three_cameras_1.png, id=5, 715.67375pt x 133.49875pt>
 File: writeup_figures/three_cameras_1.png Graphic file (type png)
 <use writeup_figures/three_cameras_1.png>
 Package pdftex.def Info: writeup_figures/three_cameras_1.png  used on input lin
-e 29.
+e 28.
 (pdftex.def)             Requested size: 350.99762pt x 65.47401pt.
 <writeup_figures/three_cameras_2.png, id=6, 715.67375pt x 133.49875pt>
 File: writeup_figures/three_cameras_2.png Graphic file (type png)
 <use writeup_figures/three_cameras_2.png>
 Package pdftex.def Info: writeup_figures/three_cameras_2.png  used on input lin
-e 30.
+e 29.
 (pdftex.def)             Requested size: 350.99762pt x 65.47401pt.
 <writeup_figures/three_cameras_3.png, id=7, 715.67375pt x 133.49875pt>
 File: writeup_figures/three_cameras_3.png Graphic file (type png)
 <use writeup_figures/three_cameras_3.png>
 Package pdftex.def Info: writeup_figures/three_cameras_3.png  used on input lin
-e 31.
+e 30.
 (pdftex.def)             Requested size: 350.99762pt x 65.47401pt.
 <writeup_figures/three_cameras_4.png, id=8, 715.67375pt x 133.49875pt>
 File: writeup_figures/three_cameras_4.png Graphic file (type png)
 <use writeup_figures/three_cameras_4.png>
 Package pdftex.def Info: writeup_figures/three_cameras_4.png  used on input lin
-e 32.
+e 31.
 (pdftex.def)             Requested size: 350.99762pt x 65.47401pt.
 <writeup_figures/three_cameras_5.png, id=9, 715.67375pt x 133.49875pt>
 File: writeup_figures/three_cameras_5.png Graphic file (type png)
 <use writeup_figures/three_cameras_5.png>
 Package pdftex.def Info: writeup_figures/three_cameras_5.png  used on input lin
-e 33.
+e 32.
 (pdftex.def)             Requested size: 350.99762pt x 65.47401pt.
-[1
+ [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./writeup_figures/Speed_09
 .png> <./writeup_figures/Speed_20.png> <./writeup_figures/Speed_30.png>]
@@ -298,141 +278,197 @@ e 33.
 File: writeup_figures/corped_image_1.png Graphic file (type png)
 <use writeup_figures/corped_image_1.png>
 Package pdftex.def Info: writeup_figures/corped_image_1.png  used on input line
- 40.
+ 39.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/corped_image_2.png, id=22, 709.65125pt x 69.25874pt>
 File: writeup_figures/corped_image_2.png Graphic file (type png)
 <use writeup_figures/corped_image_2.png>
 Package pdftex.def Info: writeup_figures/corped_image_2.png  used on input line
- 41.
+ 40.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/corped_image_3.png, id=23, 709.65125pt x 69.25874pt>
 File: writeup_figures/corped_image_3.png Graphic file (type png)
 <use writeup_figures/corped_image_3.png>
 Package pdftex.def Info: writeup_figures/corped_image_3.png  used on input line
- 42.
+ 41.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/corped_image_4.png, id=24, 709.65125pt x 69.25874pt>
 File: writeup_figures/corped_image_4.png Graphic file (type png)
 <use writeup_figures/corped_image_4.png>
 Package pdftex.def Info: writeup_figures/corped_image_4.png  used on input line
- 43.
+ 42.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/corped_image_5.png, id=25, 709.65125pt x 69.25874pt>
 File: writeup_figures/corped_image_5.png Graphic file (type png)
 <use writeup_figures/corped_image_5.png>
 Package pdftex.def Info: writeup_figures/corped_image_5.png  used on input line
- 44.
+ 43.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
-
-[2 <./writeup_figures/three_cameras_1.png> <./writeup_figures/three_cameras_2.p
-ng> <./writeup_figures/three_cameras_3.png> <./writeup_figures/three_cameras_4.
-png> <./writeup_figures/three_cameras_5.png>]
+ [2 <./writeup_figures/three_cameras_1.png> <./writeup_figures/three_cameras_2.
+png> <./writeup_figures/three_cameras_3.png> <./writeup_figures/three_cameras_4
+.png> <./writeup_figures/three_cameras_5.png>]
 <writeup_figures/steering_distribution.png, id=34, 385.44pt x 252.945pt>
 File: writeup_figures/steering_distribution.png Graphic file (type png)
 <use writeup_figures/steering_distribution.png>
 Package pdftex.def Info: writeup_figures/steering_distribution.png  used on inp
-ut line 51.
+ut line 50.
 (pdftex.def)             Requested size: 350.99762pt x 230.3424pt.
 <writeup_figures/shifted_image_1.png, id=35, 709.65125pt x 69.25874pt>
 File: writeup_figures/shifted_image_1.png Graphic file (type png)
 <use writeup_figures/shifted_image_1.png>
 Package pdftex.def Info: writeup_figures/shifted_image_1.png  used on input lin
-e 58.
+e 57.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/shifted_image_2.png, id=36, 709.65125pt x 69.25874pt>
 File: writeup_figures/shifted_image_2.png Graphic file (type png)
 <use writeup_figures/shifted_image_2.png>
 Package pdftex.def Info: writeup_figures/shifted_image_2.png  used on input lin
-e 59.
+e 58.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/shifted_image_3.png, id=37, 709.65125pt x 69.25874pt>
 File: writeup_figures/shifted_image_3.png Graphic file (type png)
 <use writeup_figures/shifted_image_3.png>
 Package pdftex.def Info: writeup_figures/shifted_image_3.png  used on input lin
-e 60.
+e 59.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/shifted_image_4.png, id=38, 709.65125pt x 69.25874pt>
 File: writeup_figures/shifted_image_4.png Graphic file (type png)
 <use writeup_figures/shifted_image_4.png>
 Package pdftex.def Info: writeup_figures/shifted_image_4.png  used on input lin
-e 61.
+e 60.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
 <writeup_figures/shifted_image_5.png, id=39, 709.65125pt x 69.25874pt>
 File: writeup_figures/shifted_image_5.png Graphic file (type png)
 <use writeup_figures/shifted_image_5.png>
 Package pdftex.def Info: writeup_figures/shifted_image_5.png  used on input lin
-e 62.
+e 61.
 (pdftex.def)             Requested size: 350.99762pt x 34.25623pt.
  [3 <./writeup_figures/corped_image_1.png> <./writeup_figures/corped_image_2.pn
 g> <./writeup_figures/corped_image_3.png> <./writeup_figures/corped_image_4.png
 > <./writeup_figures/corped_image_5.png> <./writeup_figures/steering_distributi
-on.png>]
-<writeup_figures/nvidia_model_structure.png, id=49, 533.995pt x 2171.11125pt>
+on.png>] [4 <./writeup_figures/shifted_image_1.png> <./writeup_figures/shifted_
+image_2.png> <./writeup_figures/shifted_image_3.png> <./writeup_figures/shifted
+_image_4.png> <./writeup_figures/shifted_image_5.png>]
+<writeup_figures/nvidia_model_structure.png, id=58, 533.995pt x 2171.11125pt>
 File: writeup_figures/nvidia_model_structure.png Graphic file (type png)
 <use writeup_figures/nvidia_model_structure.png>
 Package pdftex.def Info: writeup_figures/nvidia_model_structure.png  used on in
-put line 88.
+put line 114.
 (pdftex.def)             Requested size: 117.00119pt x 475.69138pt.
-<writeup_figures/lenet_model_structure.png, id=50, 561.09625pt x 1504.62125pt>
+<writeup_figures/lenet_model_structure.png, id=59, 561.09625pt x 1504.62125pt>
 File: writeup_figures/lenet_model_structure.png Graphic file (type png)
 <use writeup_figures/lenet_model_structure.png>
 Package pdftex.def Info: writeup_figures/lenet_model_structure.png  used on inp
-ut line 89.
+ut line 115.
 (pdftex.def)             Requested size: 117.00119pt x 313.72984pt.
-<writeup_figures/nvidia_reduced_model_structure.png, id=51, 533.995pt x 2171.11
+<writeup_figures/nvidia_reduced_model_structure.png, id=60, 533.995pt x 2171.11
 125pt>
 File: writeup_figures/nvidia_reduced_model_structure.png Graphic file (type png
 )
 <use writeup_figures/nvidia_reduced_model_structure.png>
 Package pdftex.def Info: writeup_figures/nvidia_reduced_model_structure.png  us
-ed on input line 89.
+ed on input line 115.
 (pdftex.def)             Requested size: 117.00119pt x 475.69138pt.
- [4 <./writeup_figures/shifted_image_1.png> <./writeup_figures/shifted_image_2.
-png> <./writeup_figures/shifted_image_3.png> <./writeup_figures/shifted_image_4
-.png> <./writeup_figures/shifted_image_5.png>] [5 <./writeup_figures/nvidia_mod
-el_structure.png> <./writeup_figures/lenet_model_structure.png> <./writeup_figu
-res/nvidia_reduced_model_structure.png>]
-<writeup_figures/nvidia_loss.png, id=67, 395.4775pt x 252.945pt>
-File: writeup_figures/nvidia_loss.png Graphic file (type png)
-<use writeup_figures/nvidia_loss.png>
-Package pdftex.def Info: writeup_figures/nvidia_loss.png  used on input line 12
-0.
-(pdftex.def)             Requested size: 117.00119pt x 74.83426pt.
-<writeup_figures/lenet_loss.png, id=68, 389.455pt x 252.945pt>
-File: writeup_figures/lenet_loss.png Graphic file (type png)
-<use writeup_figures/lenet_loss.png>
-Package pdftex.def Info: writeup_figures/lenet_loss.png  used on input line 121
-.
-(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
-<writeup_figures/nvidia_reduced_loss.png, id=69, 389.455pt x 252.945pt>
-File: writeup_figures/nvidia_reduced_loss.png Graphic file (type png)
-<use writeup_figures/nvidia_reduced_loss.png>
-Package pdftex.def Info: writeup_figures/nvidia_reduced_loss.png  used on input
- line 121.
-(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
- [6 <./writeup_figures/nvidia_loss.png> <./writeup_figures/lenet_loss.png> <./w
-riteup_figures/nvidia_reduced_loss.png>] (./Writeup.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+[5] [6 <./writeup_figures/nvidia_model_structure.png> <./writeup_figures/lenet_
+model_structure.png> <./writeup_figures/nvidia_reduced_model_structure.png>]
+<writeup_figures/nvidia_data_a.png, id=70, 382.42876pt x 252.945pt>
+File: writeup_figures/nvidia_data_a.png Graphic file (type png)
+<use writeup_figures/nvidia_data_a.png>
+Package pdftex.def Info: writeup_figures/nvidia_data_a.png  used on input line 
+140.
+(pdftex.def)             Requested size: 117.00119pt x 77.38547pt.
+<writeup_figures/lenet_data_a.png, id=71, 382.42876pt x 252.945pt>
+File: writeup_figures/lenet_data_a.png Graphic file (type png)
+<use writeup_figures/lenet_data_a.png>
+Package pdftex.def Info: writeup_figures/lenet_data_a.png  used on input line 1
+41.
+(pdftex.def)             Requested size: 117.00119pt x 77.38547pt.
+<writeup_figures/nvidia_reduced_data_a.png, id=72, 382.42876pt x 252.945pt>
+File: writeup_figures/nvidia_reduced_data_a.png Graphic file (type png)
+<use writeup_figures/nvidia_reduced_data_a.png>
+Package pdftex.def Info: writeup_figures/nvidia_reduced_data_a.png  used on inp
+ut line 141.
+(pdftex.def)             Requested size: 117.00119pt x 77.38547pt.
+<writeup_figures/nvidia_3data_a.png, id=73, 389.455pt x 252.945pt>
+File: writeup_figures/nvidia_3data_a.png Graphic file (type png)
+<use writeup_figures/nvidia_3data_a.png>
+Package pdftex.def Info: writeup_figures/nvidia_3data_a.png  used on input line
+ 142.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/lenet_3data_a.png, id=74, 389.455pt x 252.945pt>
+File: writeup_figures/lenet_3data_a.png Graphic file (type png)
+<use writeup_figures/lenet_3data_a.png>
+Package pdftex.def Info: writeup_figures/lenet_3data_a.png  used on input line 
+143.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/nvidia_reduced_3data_a.png, id=75, 389.455pt x 252.945pt>
+File: writeup_figures/nvidia_reduced_3data_a.png Graphic file (type png)
+<use writeup_figures/nvidia_reduced_3data_a.png>
+Package pdftex.def Info: writeup_figures/nvidia_reduced_3data_a.png  used on in
+put line 143.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/nvidia_data_b.png, id=76, 389.455pt x 252.945pt>
+File: writeup_figures/nvidia_data_b.png Graphic file (type png)
+<use writeup_figures/nvidia_data_b.png>
+Package pdftex.def Info: writeup_figures/nvidia_data_b.png  used on input line 
+151.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/lenet_data_b.png, id=77, 389.455pt x 252.945pt>
+File: writeup_figures/lenet_data_b.png Graphic file (type png)
+<use writeup_figures/lenet_data_b.png>
+Package pdftex.def Info: writeup_figures/lenet_data_b.png  used on input line 1
+52.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/nvidia_reduced_data_b.png, id=78, 389.455pt x 252.945pt>
+File: writeup_figures/nvidia_reduced_data_b.png Graphic file (type png)
+<use writeup_figures/nvidia_reduced_data_b.png>
+Package pdftex.def Info: writeup_figures/nvidia_reduced_data_b.png  used on inp
+ut line 152.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/nvidia_3data_b.png, id=79, 389.455pt x 252.945pt>
+File: writeup_figures/nvidia_3data_b.png Graphic file (type png)
+<use writeup_figures/nvidia_3data_b.png>
+Package pdftex.def Info: writeup_figures/nvidia_3data_b.png  used on input line
+ 154.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/lenet_3data_b.png, id=80, 389.455pt x 252.945pt>
+File: writeup_figures/lenet_3data_b.png Graphic file (type png)
+<use writeup_figures/lenet_3data_b.png>
+Package pdftex.def Info: writeup_figures/lenet_3data_b.png  used on input line 
+155.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
+<writeup_figures/nvidia_reduced_3data_b.png, id=81, 389.455pt x 252.945pt>
+File: writeup_figures/nvidia_reduced_3data_b.png Graphic file (type png)
+<use writeup_figures/nvidia_reduced_3data_b.png>
+Package pdftex.def Info: writeup_figures/nvidia_reduced_3data_b.png  used on in
+put line 155.
+(pdftex.def)             Requested size: 117.00119pt x 75.98828pt.
 
- ) 
+[7 <./writeup_figures/nvidia_data_a.png> <./writeup_figures/lenet_data_a.png> <
+./writeup_figures/nvidia_reduced_data_a.png> <./writeup_figures/nvidia_3data_a.
+png> <./writeup_figures/lenet_3data_a.png> <./writeup_figures/nvidia_reduced_3d
+ata_a.png> <./writeup_figures/nvidia_data_b.png> <./writeup_figures/lenet_data_
+b.png> <./writeup_figures/nvidia_reduced_data_b.png> <./writeup_figures/nvidia_
+3data_b.png> <./writeup_figures/lenet_3data_b.png> <./writeup_figures/nvidia_re
+duced_3data_b.png>] [8] (./Writeup.aux) ) 
 Here is how much of TeX's memory you used:
- 2585 strings out of 494923
- 36990 string characters out of 6180743
- 87174 words of memory out of 5000000
- 5839 multiletter control sequences out of 15000+600000
+ 2632 strings out of 494923
+ 38703 string characters out of 6180743
+ 87159 words of memory out of 5000000
+ 5877 multiletter control sequences out of 15000+600000
  12265 words of font info for 48 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,7n,25p,302b,226s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Writeup.pdf (6 pages, 3337540 bytes).
+ 41i,7n,25p,338b,226s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmtt12.pfb>
+Output written on Writeup.pdf (8 pages, 3418092 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 116 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 
