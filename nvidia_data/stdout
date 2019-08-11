@@ -1,0 +1,102 @@
+(/opt/carnd_p3/behavioral) root@ab70564d4946:/home/workspace/CarND-Behavioral-Cloning-P3/nvidia_data# python ../model.py -d ../data -m nvidia
+Using TensorFlow backend.
+Training data will be taken from:  ../data
+Output file is  model_nvidia  +.h5
+Please confirm with "Y"!  :: Y
+1 directory as input data found.
+../data
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+cropping2d_1 (Cropping2D)    (None, 50, 280, 3)        0         
+_________________________________________________________________
+lambda_1 (Lambda)            (None, 50, 280, 3)        0         
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 50, 280, 3)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 23, 138, 24)       1824      
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 10, 67, 36)        21636     
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 6, 63, 48)         43248     
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 4, 61, 64)         27712     
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 2, 59, 64)         36928     
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 7552)              0         
+_________________________________________________________________
+dropout_2 (Dropout)          (None, 7552)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 100)               755300    
+_________________________________________________________________
+activation_1 (Activation)    (None, 100)               0         
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 100)               0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 50)                5050      
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 50)                200       
+_________________________________________________________________
+activation_2 (Activation)    (None, 50)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 10)                510       
+_________________________________________________________________
+activation_3 (Activation)    (None, 10)                0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 892,419
+Trainable params: 892,319
+Non-trainable params: 100
+_________________________________________________________________
+Start training with data from directory:  ../data
+Epoch 1/10
+2019-08-10 22:45:46.539448: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-10 22:45:46.539519: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-10 22:45:46.539533: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-10 22:45:46.539542: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-10 22:45:46.539551: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2019-08-10 22:45:46.662348: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-08-10 22:45:46.663029: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:00:04.0
+Total memory: 11.17GiB
+Free memory: 11.09GiB
+2019-08-10 22:45:46.663084: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-08-10 22:45:46.663116: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-08-10 22:45:46.663140: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:00:04.0)
+603/603 [==============================] - 92s 153ms/step - loss: 0.0755 - val_loss: 0.0187
+
+Epoch 00001: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 2/10
+603/603 [==============================] - 69s 114ms/step - loss: 0.0337 - val_loss: 0.0207
+
+Epoch 00002: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 3/10
+603/603 [==============================] - 69s 114ms/step - loss: 0.0286 - val_loss: 0.0184
+
+Epoch 00003: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 4/10
+603/603 [==============================] - 68s 113ms/step - loss: 0.0256 - val_loss: 0.0179
+
+Epoch 00004: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 5/10
+603/603 [==============================] - 68s 113ms/step - loss: 0.0239 - val_loss: 0.0192
+
+Epoch 00005: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 6/10
+603/603 [==============================] - 68s 113ms/step - loss: 0.0227 - val_loss: 0.0165
+
+Epoch 00006: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 7/10
+603/603 [==============================] - 67s 112ms/step - loss: 0.0217 - val_loss: 0.0190
+
+Epoch 00007: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 8/10
+603/603 [==============================] - 68s 113ms/step - loss: 0.0205 - val_loss: 0.0169
+
+Epoch 00008: saving model to .//checkpoints-8-10-22-0001-01-01 00:00:00-45/model.ckpt
+Epoch 00008: early stopping
+dict_keys(['val_loss', 'loss'])
