@@ -1,125 +1,220 @@
+This is a project in Udacity Nanodegree for Self-driving car, forked from [CarND-Behaviorial-Cloning-P3](https://github.com/udacity/CarND-Behavioral-Cloning-P3).
+
 # Behavioral Cloning Project
 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-Overview
----
-This repository contains starting files for the Behavioral Cloning Project.
+The goal of the project is to clone the behavior of a game car driver. My intention is to find a solution that can drive at different speeds.
 
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to clone driving behavior. You will train, validate and test a model using Keras. The model will output a steering angle to an autonomous vehicle.
+<img src="./readme_images/Speed_09.png" width="200"/>
+<img src="./readme_images/Speed_20.png" alt="drawing" width="200"/>
+<img src="./readme_images/Speed_30.png" alt="drawing" width="200"/>
 
-We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
+For that, I have tried with 3 network structures, Nvidia's proposal, a reduced version of that and Lenet. Details of these networks are given below. 
 
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
+For data augmentation, I have taken 3 actions:
+1. Horizontally flipping the images according to project instructions
+2. Using images from left and right cameras, again as suggested in the instructions
+3. Shifting images with small steering commands to left and right
+The images are cropped and normalized to [-1,+1] before being used. These steps are taken in a Keras generator, using Keras croppeing layer and in lambda layer.
 
-To meet specifications, the project will require submitting five files: 
-* model.py (script used to create and train the model)
-* drive.py (script to drive the car - feel free to modify this file)
-* model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
+For regularization, I have used a combination of dropout and batch regularization so that the output of regression becomes smoother.
 
-This README file describes how to output the video in the "Details About Files In This Directory" section.
+These networks are trained once only with the data provided by Udacity and once with 3 data sets, where the two others were taken from Asshish Vivekanand's [post](https://github.com/aashishvanand/Behavioral-Cloning-P3}{Behavioral-Cloning-P3), who kindls shared his training data.
 
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/432/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
+Training can be performed by the command
+```
+python model.py -m [desired_model] -d [data_directory]
 
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-The Project
----
-The goals / steps of this project are the following:
-* Use the simulator to collect data of good driving behavior 
-* Design, train and validate a model that predicts a steering angle from image data
-* Use the model to drive the vehicle autonomously around the first track in the simulator. The vehicle should remain on the road for an entire loop around the track.
-* Summarize the results with a written report
-
-### Dependencies
-This lab requires:
-
-* [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
-
-The lab enviroment can be created with CarND Term1 Starter Kit. Click [here](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) for the details.
-
-The following resources can be found in this github repository:
-* drive.py
-* video.py
-* writeup_template.md
-
-The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
-
-## Details About Files In This Directory
-
-### `drive.py`
-
-Usage of `drive.py` requires you have saved the trained model as an h5 file, i.e. `model.h5`. See the [Keras documentation](https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model) for how to create this file using the following command:
-```sh
-model.save(filepath)
 ```
 
-Once the model has been saved, it can be used with drive.py using this command:
+The desired model can be one of three choices:
+- nvidia
+- reduced_nvidia
+- lenet
 
-```sh
-python drive.py model.h5
+The output of the training will be saved in an h5 file with the name model_desired_model.h5, which is to be read by drive.py.
+
+The directory is assumed to include:
+1. driving.log (a csv file)
+2. a directory called IMG that includes all images
+You can use wilde card in the name of the directory, but it must be quoted, i.e.
+
+```
+python model.py -d 'Data/*' -m reduced_nvidia
+```
+will train the model with all directories under ./Data that have a driving.log and an IMG/ directory and the result will be saved to 
+```
+model_reduced_nvidia.h5
 ```
 
-The above command will load the trained model and use the model to make predictions on individual images in real-time and send the predicted angle back to the server via a websocket connection.
+The table below summarizes the results of the autonomous driving after training:
 
-Note: There is known local system's setting issue with replacing "," with "." when using drive.py. When this happens it can make predicted steering values clipped to max/min values. If this occurs, a known fix for this is to add "export LANG=en_US.utf8" to the bashrc file.
+|  Network | Trained with | At 9 MPH | At 20 MPH | At 30 MPH | Saved in the directory      |
+| ------      | ------ | ------ | ------ | ------ | ------ |
+| Full Nvidia | One data set | OK | Wavy ride | Crashed |  nvidia_1data.C24-36-48-64-64.D100-50-10-1      |
+| Half Nvidia | One data set | OK | Wavy ride | Crashed | nvidia_1data.C12-18-24-32-32.D50-25-10-1      |
+| Lenet | One data set | Crashed | Crashed | Crashed | lenet_1data.C12-32.D120-84-1      |
+| Full Nvidia | Three data sets | OK | OK | Bad, but not crashed | nvidia_1data.C24-36-48-64-64.D100-50-10-1      |
+| Half Nvidia | Three data sets | OK |  OK | Bad, but not crashed  | nvidia_1data.C12-18-24-32-32.D50-25-10-1      |
+| Lenet | Three data sets | OK | Crashed | Crashed | lenet_1data.C12-32.D120-84-1      |
 
-#### Saving a video of the autonomous agent
+Below each of directories above, you find the following files:
+1. mp4 videos for all cases that have not crashed.
+2. model_xx.h5, model output file, where xx is the model selected
+3. stdout that shows the output of the program to the terminal
+4. model structure as png-file
+5. convergence history as png-file.
+6. loss.csv that shows how the model has converged.
 
-```sh
-python drive.py model.h5 run1
+A detailed description of the steps together with some discussions can be found in the [project writeup](./writeup.pdf).
+
+The tables below show the three network used, together with input processing as well as the regularization strategy.
+
+### Original Nvidia network
 ```
 
-The fourth argument, `run1`, is the directory in which to save the images seen by the agent. If the directory already exists, it'll be overwritten.
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    cropping2d_1 (Cropping2D)    (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    lambda_1 (Lambda)            (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    dropout_1 (Dropout)          (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    conv2d_1 (Conv2D)            (None, 23, 138, 24)       1824      
+    _________________________________________________________________
+    conv2d_2 (Conv2D)            (None, 10, 67, 36)        21636     
+    _________________________________________________________________
+    conv2d_3 (Conv2D)            (None, 6, 63, 48)         43248     
+    _________________________________________________________________
+    conv2d_4 (Conv2D)            (None, 4, 61, 64)         27712     
+    _________________________________________________________________
+    conv2d_5 (Conv2D)            (None, 2, 59, 64)         36928     
+    _________________________________________________________________
+    flatten_1 (Flatten)          (None, 7552)              0         
+    _________________________________________________________________
+    dropout_2 (Dropout)          (None, 7552)              0         
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 100)               755300    
+    _________________________________________________________________
+    activation_1 (Activation)    (None, 100)               0         
+    _________________________________________________________________
+    dropout_3 (Dropout)          (None, 100)               0         
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 50)                5050      
+    _________________________________________________________________
+    batch_normalization_1 (Batch (None, 50)                200       
+    _________________________________________________________________
+    activation_2 (Activation)    (None, 50)                0         
+    _________________________________________________________________
+    dense_3 (Dense)              (None, 10)                510       
+    _________________________________________________________________
+    activation_3 (Activation)    (None, 10)                0         
+    _________________________________________________________________
+    dense_4 (Dense)              (None, 1)                 11        
+    =================================================================
+    Total params: 892,419
+    Trainable params: 892,319
+    Non-trainable params: 100
+    _________________________________________________________________
 
-```sh
-ls run1
-
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_424.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_451.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_477.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_528.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_573.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_618.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_697.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_723.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_749.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_817.jpg
-...
 ```
 
-The image file name is a timestamp of when the image was seen. This information is used by `video.py` to create a chronological video of the agent driving.
-
-### `video.py`
-
-```sh
-python video.py run1
+### Reduced Nvidia network (half-Nvidia)
 ```
 
-Creates a video based on images found in the `run1` directory. The name of the video will be the name of the directory followed by `'.mp4'`, so, in this case the video will be `run1.mp4`.
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    cropping2d_1 (Cropping2D)    (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    lambda_1 (Lambda)            (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    dropout_1 (Dropout)          (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    conv2d_1 (Conv2D)            (None, 23, 138, 12)       912       
+    _________________________________________________________________
+    conv2d_2 (Conv2D)            (None, 10, 67, 18)        5418      
+    _________________________________________________________________
+    conv2d_3 (Conv2D)            (None, 6, 63, 24)         10824     
+    _________________________________________________________________
+    conv2d_4 (Conv2D)            (None, 4, 61, 32)         6944      
+    _________________________________________________________________
+    conv2d_5 (Conv2D)            (None, 2, 59, 32)         9248      
+    _________________________________________________________________
+    flatten_1 (Flatten)          (None, 3776)              0         
+    _________________________________________________________________
+    dropout_2 (Dropout)          (None, 3776)              0         
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 50)                188850    
+    _________________________________________________________________
+    activation_1 (Activation)    (None, 50)                0         
+    _________________________________________________________________
+    dropout_3 (Dropout)          (None, 50)                0         
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 25)                1275      
+    _________________________________________________________________
+    batch_normalization_1 (Batch (None, 25)                100       
+    _________________________________________________________________
+    activation_2 (Activation)    (None, 25)                0         
+    _________________________________________________________________
+    dense_3 (Dense)              (None, 10)                260       
+    _________________________________________________________________
+    activation_3 (Activation)    (None, 10)                0         
+    _________________________________________________________________
+    dense_4 (Dense)              (None, 1)                 11        
+    =================================================================
+    Total params: 223,842
+    Trainable params: 223,792
+    Non-trainable params: 50
+    _________________________________________________________________
 
-Optionally, one can specify the FPS (frames per second) of the video:
 
-```sh
-python video.py run1 --fps 48
+
 ```
 
-Will run the video at 48 FPS. The default FPS is 60.
+### Lenet network with 32 filters at output of convolution layers
+```
 
-#### Why create a video
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    cropping2d_1 (Cropping2D)    (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    lambda_1 (Lambda)            (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    dropout_1 (Dropout)          (None, 50, 280, 3)        0         
+    _________________________________________________________________
+    conv2d_1 (Conv2D)            (None, 48, 278, 12)       336       
+    _________________________________________________________________
+    max_pooling2d_1 (MaxPooling2 (None, 24, 139, 12)       0         
+    _________________________________________________________________
+    conv2d_2 (Conv2D)            (None, 22, 137, 32)       3488      
+    _________________________________________________________________
+    max_pooling2d_2 (MaxPooling2 (None, 11, 68, 32)        0         
+    _________________________________________________________________
+    flatten_1 (Flatten)          (None, 23936)             0         
+    _________________________________________________________________
+    dropout_2 (Dropout)          (None, 23936)             0         
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 120)               2872440   
+    _________________________________________________________________
+    batch_normalization_1 (Batch (None, 120)               480       
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 84)                10164     
+    _________________________________________________________________
+    dense_3 (Dense)              (None, 1)                 85        
+    =================================================================
+    Total params: 2,886,993
+    Trainable params: 2,886,753
+    Non-trainable params: 240
+    _________________________________________________________________
 
-1. It's been noted the simulator might perform differently based on the hardware. So if your model drives succesfully on your machine it might not on another machine (your reviewer). Saving a video is a solid backup in case this happens.
-2. You could slightly alter the code in `drive.py` and/or `video.py` to create a video of what your model sees after the image is processed (may be helpful for debugging).
 
-### Tips
-- Please keep in mind that training images are loaded in BGR colorspace using cv2 while drive.py load images in RGB to predict the steering angles.
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+```
+
+### Reduced Nvidia network (half-Nvidia)
 
